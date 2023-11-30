@@ -1,4 +1,5 @@
 import discord
+import pandas as pd
 import datetime
 import re
 import requests
@@ -9,10 +10,14 @@ def get_snowflakes():
     response = requests.get(url)
     raw_data = response.json()
     discord_ids = {item['playerName']:item['discordID'] for item in raw_data}
-    team_info = {item['playerName']:item['Team'] for item in raw_data}
-    return discord_ids, team_info
+    mlr_teams = {item['playerName']:item['Team'] for item in raw_data}
+    url = f'https://docs.google.com/spreadsheets/d/{SHEET}/gviz/tq?tqx=out:csv&sheet={TAB}'
+    milr_teams = pd.read_csv(url)
+    milr_teams = milr_teams[['Name', 'MiLR Team']]
+    milr_teams = milr_teams.to_dict(orient = list)
+    return discord_ids, mlr_teams, milr_teams
 
-def parse_comments(snowflakes, teams):
+def parse_comments(snowflakes, mlr, milr):
     for comment in reddit.subreddit('fakebaseball').stream.comments(skip_existing = True):
 
         # Go through each of the rss_feeds and see if the comment belongs
@@ -40,7 +45,7 @@ def parse_comments(snowflakes, teams):
 
                     # if curr_batter matches 
                     try:
-                        if curr_batter not in ping_exclude and teams[curr_batter] == r['abbrev']:
+                        if curr_batter not in ping_exclude and mlr[curr_batter] == r['abbrev'] or milr[curr_batter] == r['abbrev']:
                             snowflake = snowflakes[curr_batter]
                             atbat_text = f'<@{snowflake}>: '
                         else:                                   # If not, just post the batter's name
