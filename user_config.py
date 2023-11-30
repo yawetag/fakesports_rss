@@ -1,6 +1,10 @@
 import praw 
 from dhooks import Webhook
 
+SHEET = '1mwwPvV8FTXpjoUC4M11ttUydyLnBl2CKbwnufrtCqy0'
+
+TAB = 'Player%20List'
+
 # praw = Python Reddit API Wrapper
 # go to https://www.reddit.com/prefs/apps
 # finish this description
