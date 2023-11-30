@@ -14,7 +14,7 @@ def get_snowflakes():
     url = f'https://docs.google.com/spreadsheets/d/{SHEET}/gviz/tq?tqx=out:csv&sheet={TAB}'
     milr_teams = pd.read_csv(url)
     milr_teams = milr_teams[['Name', 'MiLR Team']]
-    milr_teams = milr_teams.to_dict(orient = list)
+    milr_teams = milr_teams.set_index('Name').to_dict()['MiLR Team']
     return discord_ids, mlr_teams, milr_teams
 
 def parse_comments(snowflakes, mlr, milr):
