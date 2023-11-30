@@ -9,9 +9,10 @@ def get_snowflakes():
     response = requests.get(url)
     raw_data = response.json()
     discord_ids = {item['playerName']:item['discordID'] for item in raw_data}
-    return discord_ids
+    team_info = {item['playerName']:item['Team'] for item in raw_data}
+    return discord_ids, team_info
 
-def parse_comments(snowflakes):
+def parse_comments(snowflakes, teams):
     for comment in reddit.subreddit('fakebaseball').stream.comments(skip_existing = True):
 
         # Go through each of the rss_feeds and see if the comment belongs
@@ -39,11 +40,11 @@ def parse_comments(snowflakes):
 
                     # if curr_batter matches 
                     try:
-                        if curr_batter not in ping_exclude:
+                        if curr_batter not in ping_exclude and teams[curr_batter] == r['abbrev']:
                             snowflake = snowflakes[curr_batter]
-                            atbat_text = f'<@{snowflake}> : '
+                            atbat_text = f'<@{snowflake}>: '
                         else:                                   # If not, just post the batter's name
-                            atbat_text = f'{curr_batter} : '
+                            atbat_text = f'{curr_batter}: '
                         atbat_text += f'You are up! Your timer ends <t:{int(comment.created_utc + (12 * 60 * 60))}:R> (<t:{int(comment.created_utc + (12 * 60 * 60))}:F> in your local time).'
 
                     # If curr_batter doesn't match any of the users, just leave it blank

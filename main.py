@@ -2,7 +2,7 @@ import datetime
 import time
 from parse_comments import *
 
-snowflakes = get_snowflakes()
+snowflakes, teams = get_snowflakes()
 
 while True:
     print(f"{datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S')} Reddit post watcher starting with the following searches:")
@@ -11,7 +11,7 @@ while True:
         print(f"     * {r['search']} -- results: {r['results']}  ping: {r['ping']}")
 
     try:
-        parse_comments(snowflakes)
+        parse_comments(snowflakes, teams)
     except Exception as e:
         print(e)
         time.sleep(15)
