@@ -47,10 +47,10 @@ def parse_comments(snowflakes, mlr, milr):
                     try:
                         if curr_batter not in ping_exclude and mlr[curr_batter] == r['abbrev'] or milr[curr_batter] == r['abbrev']:
                             snowflake = snowflakes[curr_batter]
-                            atbat_text = f'<@{snowflake}>: '
+                            atbat_text = f'<@{snowflake}> '
                         else:                                   # If not, just post the batter's name
-                            atbat_text = f'{curr_batter}: '
-                        atbat_text += f'You are up! Your timer ends <t:{int(comment.created_utc + (12 * 60 * 60))}:R> (<t:{int(comment.created_utc + (12 * 60 * 60))}:F> in your local time).'
+                            atbat_text = f'{curr_batter} '
+                        atbat_text += f'is up! The timer ends <t:{int(comment.created_utc + (12 * 60 * 60))}:R> (<t:{int(comment.created_utc + (12 * 60 * 60))}:F> in your local time).'
 
                     # If curr_batter doesn't match any of the users, just leave it blank
                     except:
