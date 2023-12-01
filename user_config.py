@@ -10,9 +10,9 @@ TAB = 'Player%20List'
 # finish this description
 
 reddit = praw.Reddit(
-    client_id     = '-- insert thing here --',
-    client_secret = '-- insert thing here --',
-    user_agent    = '-- insert thing here --'
+    client_id     = '',
+    client_secret = '',
+    user_agent    = ''
 )
 
 # List of players who do *not* want to be pinged. This should be in the following format:
@@ -22,19 +22,19 @@ ping_exclude = []
 # List of RSS feeds for each league. Delete those you don't need and modify those you do, while maintaining the formatting.
 rss_feeds = [
     {
-        'search'  : 'MLR Team',
-        'abbrev'  : '-- insert thing here --',
-        'webhook' : Webhook('-- insert thing here --'),
-        'hexcode' : '-- insert thing here --',
-        'results' : False,
+        'search'  : '',
+        'abbrev'  : '',
+        'webhook' : Webhook(''),
+        'hexcode' : '',
+        'results' : True,
         'ping'    : True
     }, 
 
     {
-        'search'  : 'MiLR Team',
-        'abbrev'  : '-- insert thing here --',
-        'webhook' : Webhook('-- insert thing here --'),
-        'hexcode' : '-- insert thing here --',
+        'search'  : '',
+        'abbrev'  : '',
+        'webhook' : Webhook(''),
+        'hexcode' : '',
         'results' : False,
         'ping'    : True
     }
