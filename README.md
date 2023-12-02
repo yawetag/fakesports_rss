@@ -2,7 +2,7 @@
 This code replaces the MLR OOTC's Play by Play script currently hosted at https://github.com/MLROOTC/MLR-OOTC/tree/main/Python%20Scripts/Play%20by%20Play . This update includes the following:
 - multiple MLR and MiLR team feeds through the same file instance
 - pinging of users when their at-bat is posted
-- ignoring of the bot's results posts
+- ignoring of the bot's results posts (in favor of the MLR results webhook)
 
 All of the above are optional changes, and the feed can be set to operate just like the OOTC's current version.
 
@@ -25,7 +25,7 @@ Run `python main.py` (or `python3 main.py` on some builds). If all goes well, yo
 
 If any errors appear while running, you'll need to investigate the reason why. Most of the time, it's due to improper information being stored in the user_config file. If you still cannot figure it out, you can get help through the following:
 * GitHub: Enter a new issue at https://github.com/yawetag/mlr_rss/issues and it will be investigated.
-* Let Stupido Einsteiny or Mark Schihne know through DMs on Discord and they will investigate.
+* Let Stupido Einsteiny (yawetag) or Mark Schihne (n8_n) know through DMs on Discord and they will investigate.
 
 # Requirements
 The following Python libraries are required to run the MLR RSS bot. If you ever receive an error that the library isn't present, consult documentation on how to install libraries for your build:
