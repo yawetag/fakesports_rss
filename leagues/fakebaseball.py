@@ -3,6 +3,7 @@ import pandas as pd
 import datetime
 import re
 import requests
+import time
 from user_config_dev import *
 
 API_URL = 'https://www.rslashfakebaseball.com/api/players'
@@ -80,3 +81,6 @@ def parse_comments(snowflakes, mlr, milr):
 
                 # Send the webhook
                 r['webhook'].send(atbat_text, embed=embed)
+    
+    # Pause to allow other leagues a chance
+    time.sleep(0.1)
