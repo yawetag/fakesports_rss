@@ -15,7 +15,7 @@ while True:
     print(f"{datetime.datetime.now().strftime('%m/%d/%Y %H:%M:%S')} Reddit post watcher starting with the following searches:")
 
     for r in rss_feeds:
-        print(f"     * {r['search']} ({r['abbrev']} - {r['league']}) -- results: {r['results']} -- ping: {r['ping']}")
+        print(f"     * {r['search']} ({r['abbrev']} - {r['subreddit']}) -- results: {r['results']} -- ping: {r['ping']}")
 
     try:
         mlr.parse_comments(mlr_snowflakes, mlr_players, milr_players)

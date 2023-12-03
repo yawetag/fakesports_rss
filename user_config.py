@@ -26,21 +26,21 @@ ping_exclude = []
 # create a new webhook. name it, pick what channel you want it in, and then hit the "copy webhook URL" button and paste it below.
 rss_feeds = [
     {
-        'search'  : 'Oakland Athletics',    # The program looks for new comments in posts with this in the title.
-        'abbrev'  : 'OAK',                  # Your team abbreviation. Case doesn't matter.
-        'league'  : 'MLR',                  # The league of the team. Case doesn't matter.
-        'webhook' : Webhook('https://discord.com/api/webhooks/...'),   # The webhook URL you got
-        'hexcode' : '003831',               # The color of the vertical bar on the side (you choose)
-        'results' : True,                   # Does your team want to see the bot's result comments, or do you have the results webhook?
-        'ping'    : True,                   # Does your team want pings? You can leave this on and disable individual players above.
+        'search'     : 'Oakland Athletics',    # The program looks for new comments in posts with this in the title.
+        'abbrev'     : 'OAK',                  # Your team abbreviation. Case doesn't matter.
+        'subreddit'  : 'MLR',                  # The subreddit of the team.
+        'webhook'    : Webhook('https://discord.com/api/webhooks/...'),   # The webhook URL you got
+        'hexcode'    : '003831',               # The color of the vertical bar on the side (you choose)
+        'results'    : True,                   # Does your team want to see the bot's result comments, or do you have the results webhook?
+        'ping'       : True,                   # Does your team want pings? You can leave this on and disable individual players above.
     }, 
     {
-        'search'  : 'Golden Pride',
-        'abbrev'  : 'GOP',
-        'league'  : 'MiLR',
-        'webhook' : Webhook('https://discord.com/api/webhooks/'),
-        'hexcode' : '7B2C88',
-        'results' : False,
-        'ping'    : True,
+        'search'     : 'Golden Pride',
+        'abbrev'     : 'GOP',
+        'subreddit'  : 'MiLR',
+        'webhook'    : Webhook('https://discord.com/api/webhooks/'),
+        'hexcode'    : '7B2C88',
+        'results'    : False,
+        'ping'       : True,
     },
 ]
