@@ -3,13 +3,6 @@ from dhooks import Webhook
 
 # Note that for this file, if there are apostrophes present fill this out BETWEEN them.
 
-# Go to the current roster sheets. 
-# For SHEET, copy/paste this part of the URL: https://docs.google.com/spreadsheets/d/ -- COPY PASTE THIS -- /edit
-# For TAB, put the name of the tab that stores player names and MLR team, but replace any spaces with "%20".
-# As of Session 9.9, this should be written as "Player%20List".
-SHEET = '1mwwPvV8FTXpjoUC4M11ttUydyLnBl2CKbwnufrtCqy0'
-TAB = 'Player%20List'
-
 # praw = Python Reddit API Wrapper
 # go to https://www.reddit.com/prefs/apps
 # hit "create an app..." at the bottom
@@ -34,7 +27,8 @@ ping_exclude = []
 rss_feeds = [
     {
         'search'  : 'Oakland Athletics',    # The program looks for new comments in posts with this in the title.
-        'abbrev'  : 'OAK',                  # Your team abbreviation.
+        'abbrev'  : 'OAK',                  # Your team abbreviation. Case doesn't matter.
+        'league'  : 'MLR',                  # The league of the team. Case doesn't matter.
         'webhook' : Webhook('https://discord.com/api/webhooks/...'),   # The webhook URL you got
         'hexcode' : '003831',               # The color of the vertical bar on the side (you choose)
         'results' : True,                   # Does your team want to see the bot's result comments, or do you have the results webhook?
@@ -43,6 +37,7 @@ rss_feeds = [
     {
         'search'  : 'Golden Pride',
         'abbrev'  : 'GOP',
+        'league'  : 'MiLR',
         'webhook' : Webhook('https://discord.com/api/webhooks/'),
         'hexcode' : '7B2C88',
         'results' : False,

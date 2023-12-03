@@ -3,21 +3,39 @@ import pandas as pd
 import datetime
 import re
 import requests
-from user_config import *
+from user_config_dev import *
 
-def get_snowflakes():
-    url = 'https://www.rslashfakebaseball.com/api/players'
-    response = requests.get(url)
+API_URL = 'https://www.rslashfakebaseball.com/api/players'
+SHEET = '1mwwPvV8FTXpjoUC4M11ttUydyLnBl2CKbwnufrtCqy0'
+TAB = 'Player%20List'
+
+def mlr_discord():
+    '''Gets Discord snowflake numbers for MLR players.'''
+    response = requests.get(API_URL)
     raw_data = response.json()
     discord_ids = {item['playerName']:item['discordID'] for item in raw_data}
+    
+    return discord_ids
+
+def mlr_players():
+    '''Gets MLR team for MLR players.'''
+    response = requests.get(API_URL)
+    raw_data = response.json()
     mlr_teams = {item['playerName']:item['Team'] for item in raw_data}
+    
+    return mlr_teams
+
+def milr_players():
+    '''Gets MiLR team for MLR players.'''
     url = f'https://docs.google.com/spreadsheets/d/{SHEET}/gviz/tq?tqx=out:csv&sheet={TAB}'
     milr_teams = pd.read_csv(url)
     milr_teams = milr_teams[['Name', 'MiLR Team']]
     milr_teams = milr_teams.set_index('Name').to_dict()['MiLR Team']
-    return discord_ids, mlr_teams, milr_teams
+    
+    return milr_teams
 
 def parse_comments(snowflakes, mlr, milr):
+    '''Goes through each new comment and checks if it needs to be posted.'''
     for comment in reddit.subreddit('fakebaseball').stream.comments(skip_existing = True):
 
         # Go through each of the rss_feeds and see if the comment belongs
