@@ -28,7 +28,7 @@ rss_feeds = [
     {
         'search'     : 'Oakland Athletics',    # The program looks for new comments in posts with this in the title.
         'abbrev'     : 'OAK',                  # Your team abbreviation. Case doesn't matter.
-        'subreddit'  : 'MLR',                  # The subreddit of the team.
+        'subreddit'  : 'fakebaseball',         # The subreddit of the team.
         'webhook'    : Webhook('https://discord.com/api/webhooks/...'),   # The webhook URL you got
         'hexcode'    : '003831',               # The color of the vertical bar on the side (you choose)
         'results'    : True,                   # Does your team want to see the bot's result comments, or do you have the results webhook?
@@ -37,7 +37,7 @@ rss_feeds = [
     {
         'search'     : 'Golden Pride',
         'abbrev'     : 'GOP',
-        'subreddit'  : 'MiLR',
+        'subreddit'  : 'fakebaseball',
         'webhook'    : Webhook('https://discord.com/api/webhooks/'),
         'hexcode'    : '7B2C88',
         'results'    : False,
