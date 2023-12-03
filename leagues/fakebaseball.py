@@ -4,7 +4,7 @@ import datetime
 import re
 import requests
 import time
-from user_config_dev import *
+from user_config import *
 
 API_URL = 'https://www.rslashfakebaseball.com/api/players'
 SHEET = '1mwwPvV8FTXpjoUC4M11ttUydyLnBl2CKbwnufrtCqy0'

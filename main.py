@@ -1,6 +1,6 @@
 import datetime
 import time
-from user_config_dev import *
+from user_config import *
 from leagues import fakebaseball as mlr
 
 LEAGUES = ['fakebaseball']
