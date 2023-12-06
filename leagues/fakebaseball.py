@@ -57,8 +57,12 @@ def parse_comments(snowflakes, mlr, milr):
                 if len(image_urls) > 0:
                     embed.set_image(url=image_urls[0])
 
-                # If the feed wants to ping the current batter, do so
-                if r['ping']:
+                # If the post is a result, then set atbat_text to blank, so we don't ping the batter again
+                if comment.author == 'FakeBaseball_Umpire' and 'Pitch:' in comment.body and 'Swing:' in comment.body and 'Diff:' in comment.body:
+                    atbat_text = ''
+                
+                # Otherwise, if the feed wants to ping the current batter, do so
+                elif r['ping']:
                     txt = comment.body
                     curr_batter = txt[txt.find('[')+1:txt.find('](/u/')]
 
