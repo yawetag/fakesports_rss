@@ -1,1 +1,3 @@
 .vscode/
+user_config_dev.py
+__pycache__/

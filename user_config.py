@@ -3,13 +3,6 @@ from dhooks import Webhook
 
 # Note that for this file, if there are apostrophes present fill this out BETWEEN them.
 
-# Go to the current roster sheets. 
-# For SHEET, copy/paste this part of the URL: https://docs.google.com/spreadsheets/d/ -- COPY PASTE THIS -- /edit
-# For TAB, put the name of the tab that stores player names and MLR team, but replace any spaces with "%20".
-# As of Session 9.9, this should be written as "Player%20List".
-SHEET = '1mwwPvV8FTXpjoUC4M11ttUydyLnBl2CKbwnufrtCqy0'
-TAB = 'Player%20List'
-
 # praw = Python Reddit API Wrapper
 # go to https://www.reddit.com/prefs/apps
 # hit "create an app..." at the bottom
@@ -33,19 +26,21 @@ ping_exclude = []
 # create a new webhook. name it, pick what channel you want it in, and then hit the "copy webhook URL" button and paste it below.
 rss_feeds = [
     {
-        'search'  : 'Oakland Athletics',    # The program looks for new comments in posts with this in the title.
-        'abbrev'  : 'OAK',                  # Your team abbreviation.
-        'webhook' : Webhook('https://discord.com/api/webhooks/...'),   # The webhook URL you got
-        'hexcode' : '003831',               # The color of the vertical bar on the side (you choose)
-        'results' : True,                   # Does your team want to see the bot's result comments, or do you have the results webhook?
-        'ping'    : True,                   # Does your team want pings? You can leave this on and disable individual players above.
+        'search'     : 'Oakland Athletics',    # The program looks for new comments in posts with this in the title.
+        'abbrev'     : 'OAK',                  # Your team abbreviation. Case doesn't matter.
+        'subreddit'  : 'fakebaseball',         # The subreddit of the team.
+        'webhook'    : Webhook('https://discord.com/api/webhooks/...'),   # The webhook URL you got
+        'hexcode'    : '003831',               # The color of the vertical bar on the side (you choose)
+        'results'    : True,                   # Does your team want to see the bot's result comments, or do you have the results webhook?
+        'ping'       : True,                   # Does your team want pings? You can leave this on and disable individual players above.
     }, 
     {
-        'search'  : 'Golden Pride',
-        'abbrev'  : 'GOP',
-        'webhook' : Webhook('https://discord.com/api/webhooks/'),
-        'hexcode' : '7B2C88',
-        'results' : False,
-        'ping'    : True,
+        'search'     : 'Golden Pride',
+        'abbrev'     : 'GOP',
+        'subreddit'  : 'fakebaseball',
+        'webhook'    : Webhook('https://discord.com/api/webhooks/'),
+        'hexcode'    : '7B2C88',
+        'results'    : False,
+        'ping'       : True,
     },
 ]
